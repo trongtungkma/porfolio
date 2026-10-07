@@ -54,7 +54,9 @@ npm run start    # Start the production server
 portfolio/
 ├── app/                    # Pages, styling, data, and API routes
 │   └── api/chat/route.ts   # Digital Twin chat endpoint
+├── content/                # Validated career data and protected overrides
 ├── public/                 # CV and static assets
+├── scripts/                # CV import and validation tools
 ├── package.json            # Dependencies and scripts
 └── .env.example            # Environment variable template
 ```
@@ -65,7 +67,11 @@ portfolio/
 - Edit `portfolio/app/portfolio-data.ts` for projects and skills.
 - Edit `portfolio/app/api/chat/route.ts` to update the Digital Twin context.
 - Edit `portfolio/app/globals.css` for global styling and responsive behavior.
-- Replace `portfolio/public/Le-Trong-Tung-Middle-FE.pdf` to update the downloadable CV.
+- Replace `portfolio/public/cv.pdf` to update the downloadable CV and trigger an automated data-update pull request.
+
+## Automatic CV updates
+
+When `portfolio/public/cv.pdf` changes on `master`, GitHub Actions extracts and validates its content, runs the complete project check, and opens a pull request with the resulting changes. Configure the repository secret `OPENROUTER_API_KEY` before using the workflow. See `portfolio/README.md` for setup and safety details.
 
 ## License
 

@@ -1,0 +1,195 @@
+{
+  "meta": {
+    "sourceCv": "/cv.pdf",
+    "updatedAt": "2026-10-08",
+    "importedAt": null
+  },
+  "person": {
+    "name": "Lê Trọng Tùng",
+    "aliases": ["Le Trong Tung"],
+    "title": "Frontend Developer",
+    "location": "Hanoi, Vietnam",
+    "email": "trongtung.kma@gmail.com",
+    "phone": "+84 377 935 698",
+    "careerStarted": "March 2019",
+    "availability": "Current availability is not confirmed; contact Tung for his latest status."
+  },
+  "summary": [
+    "Product-minded frontend engineer experienced in converting complex business requirements into clear, reliable, maintainable interfaces.",
+    "Has collaborated with customers, designers, frontend and backend engineers across Vietnam, Japan, and Korea.",
+    "Values clean code, direct communication, disciplined delivery, continuous learning, and products that remain maintainable after launch.",
+    "Career direction stated in the CV: continue developing as a frontend developer toward senior responsibilities. No mentoring experience is documented."
+  ],
+  "employment": [
+    {
+      "id": "cmc-global",
+      "company": "CMC Global",
+      "client": "Samsung SDS projects",
+      "role": "Frontend Developer",
+      "period": "Apr 2022 — Present",
+      "currentAsRecorded": true,
+      "description": "Building and maintaining features for Samsung projects using Vue.js alongside Java backend teams. Working with designers and customers in a structured delivery process.",
+      "highlights": [
+        "Builds and maintains features for Samsung projects.",
+        "Works primarily with a Vue.js frontend and Java backend.",
+        "Exchanges requirements and implementation details with designers and customers.",
+        "Works in a professional, meticulous environment with a strict delivery process."
+      ],
+      "technologies": ["Vue.js", "Java integration", "Customer collaboration"]
+    },
+    {
+      "id": "mirabo-jsc",
+      "company": "Mirabo JSC",
+      "client": null,
+      "role": "Frontend Developer",
+      "period": "Mar 2019 — Apr 2022",
+      "currentAsRecorded": false,
+      "description": "Developed web applications for Japanese customers, including healthcare, education, staffing, and warehouse products. Worked with Vue, Nuxt, and TypeScript in Agile teams.",
+      "highlights": [
+        "Delivered outsourced products for Japanese customers.",
+        "Used Vue.js and Nuxt.js with Agile, Jira, Figma, Git, and Postman.",
+        "Worked across healthcare, education, workforce, logistics, and corporate web products.",
+        "Progressed from junior-level work toward senior frontend responsibility."
+      ],
+      "technologies": ["Vue.js & Nuxt", "TypeScript", "Agile delivery"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "zabbix-management",
+      "name": "Zabbix Management",
+      "role": "Frontend Developer",
+      "period": "From Jan 2024",
+      "currentAsRecorded": true,
+      "description": "An application for collecting monitoring data and analyzing metrics from connected systems.",
+      "highlights": ["Frontend development with Vue.js, working with a Java backend and teams in Vietnam and Korea."],
+      "technologies": ["Vue.js", "Java"],
+      "teamSize": 9
+    },
+    {
+      "id": "projects-management",
+      "name": "Projects Management",
+      "role": "Frontend Developer",
+      "period": "Apr 2022 — Jan 2024",
+      "currentAsRecorded": false,
+      "description": "A cloud platform for standardizing operations, automating tasks, and visualizing service data through site reliability engineering (SRE).",
+      "highlights": ["Frontend development on a 20-person team, working with Vue.js, NestJS, and AWS."],
+      "technologies": ["Vue.js", "NestJS", "AWS"],
+      "teamSize": 20
+    },
+    {
+      "id": "company-homepage",
+      "name": "Company Homepage",
+      "role": "Frontend Developer",
+      "period": "Jan 2022 — Apr 2022",
+      "currentAsRecorded": false,
+      "description": "Company website maintenance and new view development.",
+      "highlights": ["Fixed defects and built new company website views."],
+      "technologies": ["Vue.js", "Vuex", "SCSS", "Ant Design Vue", "Figma", "WordPress"],
+      "teamSize": 5
+    },
+    {
+      "id": "labor-staff-cms",
+      "name": "Labor Staff CMS",
+      "role": "Frontend Developer",
+      "period": "May 2021 — Jan 2022",
+      "currentAsRecorded": false,
+      "description": "A workforce CMS for administrators, employees, part-time workers, documents, calendars, break times, and analysis.",
+      "highlights": ["Built workforce management interfaces with Vue.js and Vuetify."],
+      "technologies": ["Vue.js", "Vuetify", "Figma", "gRPC"],
+      "teamSize": 6
+    },
+    {
+      "id": "warehouse-manager",
+      "name": "Warehouse Manager",
+      "role": "Frontend Developer",
+      "period": "Aug 2020 — May 2021",
+      "currentAsRecorded": false,
+      "description": "A warehouse application for monitoring goods transfers in real time and reviewing their history.",
+      "highlights": ["Helped migrate the client from Flash to Vue.js and TypeScript, using WebSocket for live updates."],
+      "technologies": ["Vue.js", "TypeScript", "WebSocket"],
+      "teamSize": 8
+    },
+    {
+      "id": "pregnancy-health-monitor",
+      "name": "Pregnancy Health Monitor",
+      "role": "Backend Developer",
+      "period": "Jun 2020 — Aug 2020",
+      "currentAsRecorded": false,
+      "description": "A health monitoring product with user and health-checking APIs.",
+      "highlights": ["Created user and health-checking APIs with GraphQL and Node.js."],
+      "technologies": ["GraphQL", "Node.js"],
+      "teamSize": 5
+    },
+    {
+      "id": "remote-health-care",
+      "name": "Remote Health Care",
+      "role": "Frontend Developer",
+      "period": "Sep 2019 — Jun 2020",
+      "currentAsRecorded": false,
+      "description": "A remote healthcare experience for patients and doctors on Google Smart Home and Nest Hub.",
+      "highlights": ["Built web interfaces and voice-driven navigation using Vue.js, Actions on Google, and Dialogflow."],
+      "technologies": ["Vue.js", "Dialogflow", "Java"],
+      "teamSize": 5
+    },
+    {
+      "id": "school-management-cms",
+      "name": "School Management CMS",
+      "role": "Full-stack Junior",
+      "period": "Mar 2019 — Sep 2019",
+      "currentAsRecorded": false,
+      "description": "A CMS for managing schools, teachers, students, and documents.",
+      "highlights": ["Worked across the Laravel backend and Vue.js frontend."],
+      "technologies": ["Laravel", "Vue.js", "MySQL", "Git", "Adobe XD"],
+      "teamSize": 5
+    }
+  ],
+  "skillGroups": [
+    {
+      "id": "frontend",
+      "title": "Frontend development",
+      "description": "My main focus: building and maintaining web interfaces.",
+      "skills": ["Vue.js", "Nuxt.js", "React", "TypeScript", "JavaScript", "HTML & CSS", "SCSS"]
+    },
+    {
+      "id": "services",
+      "title": "Services & integration",
+      "description": "Experience connecting interfaces to data and backend services.",
+      "skills": ["NestJS", "Node.js", "GraphQL", "gRPC", "WebSocket", "MySQL", "AWS"]
+    },
+    {
+      "id": "collaboration",
+      "title": "Working together",
+      "description": "Tools and practices I use with designers, clients, and developers.",
+      "skills": ["Git", "Figma", "Jira", "Postman", "Agile / Scrum"]
+    }
+  ],
+  "education": [
+    {
+      "id": "academy-of-cryptography-techniques",
+      "institution": "Academy of Cryptography Techniques",
+      "program": "Information Security",
+      "period": "2014–2019"
+    }
+  ],
+  "certifications": [
+    {
+      "id": "aws-solutions-architect-associate",
+      "name": "AWS Solutions Architect",
+      "detail": "Associate certification",
+      "year": "2022",
+      "statusNote": "Current renewal status is unknown."
+    }
+  ],
+  "languages": [
+    {
+      "id": "toeic",
+      "name": "TOEIC",
+      "level": "650",
+      "year": "2022",
+      "note": "Continuing to improve my communication skills."
+    }
+  ],
+  "interests": ["Reading", "Studying new technologies", "Improving English communication", "Sports", "Esports"],
+  "principle": "Never stop improving. Learn hard, work hard."
+}

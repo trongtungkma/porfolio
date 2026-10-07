@@ -1,0 +1,16 @@
+{
+  "featuredProjectIds": [
+    "zabbix-management",
+    "projects-management",
+    "warehouse-manager",
+    "remote-health-care"
+  ],
+  "projectCategories": {
+    "zabbix-management": "Monitoring",
+    "projects-management": "Enterprise automation",
+    "warehouse-manager": "Logistics",
+    "remote-health-care": "Healthcare"
+  },
+  "projectUrls": {},
+  "heroTechnologies": ["Vue.js", "TypeScript", "React", "Nuxt.js", "NestJS", "AWS"]
+}

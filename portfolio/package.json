@@ -9,12 +9,17 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "vinext start",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "typecheck": "tsc --noEmit",
+    "content:validate": "tsx scripts/validate-career.ts",
+    "cv:import": "tsx scripts/import-cv.ts",
+    "check": "npm run content:validate && npm run lint && npm run typecheck && npm run build"
   },
   "dependencies": {
     "next": "16.2.6",
     "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react-dom": "19.2.6",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.37.1",
@@ -30,6 +35,7 @@
     "eslint-config-next": "16.2.6",
     "react-server-dom-webpack": "19.2.6",
     "tailwindcss": "4.2.1",
+    "tsx": "^4.20.6",
     "typescript": "5.9.3",
     "vinext": "1.0.0-beta.3",
     "vite": "8.0.13",

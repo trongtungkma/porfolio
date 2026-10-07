@@ -1,0 +1,63 @@
+name: Update portfolio from CV
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - portfolio/public/cv.pdf
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-portfolio-from-cv
+  cancel-in-progress: true
+
+jobs:
+  import-cv:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.13.0
+          cache: npm
+          cache-dependency-path: portfolio/package-lock.json
+
+      - name: Install PDF text extraction
+        run: sudo apt-get update && sudo apt-get install --yes poppler-utils
+
+      - name: Install dependencies
+        working-directory: portfolio
+        run: npm ci
+
+      - name: Import CV data
+        working-directory: portfolio
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_CV_MODEL: ${{ vars.OPENROUTER_CV_MODEL || 'openai/gpt-4.1-mini' }}
+        run: npm run cv:import
+
+      - name: Validate site
+        working-directory: portfolio
+        run: npm run check
+
+      - name: Create review pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/update-from-cv
+          delete-branch: true
+          commit-message: Update portfolio data from CV
+          title: Update portfolio data from CV
+          body: |
+            This pull request was generated from `portfolio/public/cv.pdf`.
+
+            Before merging, review all career facts, dates, contact details, and project descriptions. The workflow validates the data, lints the code, runs TypeScript checks, and builds the site.
