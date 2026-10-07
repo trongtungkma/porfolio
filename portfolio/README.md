@@ -23,13 +23,15 @@ The key is used only on the server. Messages are held in browser memory, not sav
 
 The CV is stored at `public/cv.pdf`. Replacing that file and pushing it to `master` starts the **Update portfolio from CV** GitHub Actions workflow. The workflow extracts the PDF text, converts it to validated career data, checks the site, and opens a pull request for review. It never publishes extracted content directly.
 
+For the complete update and troubleshooting procedure, see [`../docs/updating-cv.md`](../docs/updating-cv.md).
+
 Repository setup:
 
 1. Add `OPENROUTER_API_KEY` as a GitHub Actions repository secret.
 2. Optionally add `OPENROUTER_CV_MODEL` as a repository variable. It defaults to `openai/gpt-4.1-mini`.
 3. In GitHub Actions settings, allow workflows to create pull requests if that option is disabled.
 
-To test an import locally, install Poppler so `pdftotext` is on `PATH`, configure `.env.local` or export `OPENROUTER_API_KEY`, and run:
+To test an import locally, install Poppler so `pdftotext` is on `PATH`, add `OPENROUTER_API_KEY` to `.env.local` or export it in the shell, and run:
 
 ```sh
 npm run cv:import

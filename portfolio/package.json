@@ -11,9 +11,10 @@
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/cv-update.test.ts",
     "content:validate": "tsx scripts/validate-career.ts",
     "cv:import": "tsx scripts/import-cv.ts",
-    "check": "npm run content:validate && npm run lint && npm run typecheck && npm run build"
+    "check": "npm run content:validate && npm test && npm run lint && npm run typecheck && npm run build"
   },
   "dependencies": {
     "next": "16.2.6",

@@ -73,6 +73,8 @@ portfolio/
 
 When `portfolio/public/cv.pdf` changes on `master`, GitHub Actions extracts and validates its content, runs the complete project check, and opens a pull request with the resulting changes. Configure the repository secret `OPENROUTER_API_KEY` before using the workflow. See `portfolio/README.md` for setup and safety details.
 
+Follow the complete [CV update guide](docs/updating-cv.md) for GitHub, local testing, review checks, and troubleshooting.
+
 ## License
 
 This is a personal portfolio project. All personal content and assets are reserved by their owner.

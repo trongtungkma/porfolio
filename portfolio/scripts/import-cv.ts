@@ -1,6 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import careerJson from '../content/career.json';
 import { careerSchema, type Career } from '../content/career-schema';
 
@@ -11,18 +12,15 @@ const pdfArgument = process.argv.find((argument) => argument.startsWith('--pdf='
 const pdfPath = pdfArgument ? resolve(process.cwd(), pdfArgument.slice('--pdf='.length)) : defaultPdfPath;
 const allowLargeChange = process.argv.includes('--allow-large-change');
 
-const apiKey = process.env.OPENROUTER_API_KEY?.trim();
-const model = process.env.OPENROUTER_CV_MODEL?.trim() || 'openai/gpt-4.1-mini';
-
 function fail(message: string): never {
   throw new Error(`[CV import] ${message}`);
 }
 
-function normalize(value: string) {
+export function normalize(value: string) {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
-function slugify(value: string) {
+export function slugify(value: string) {
   return value
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
@@ -78,6 +76,12 @@ const expectedShape = {
 };
 
 async function parseWithOpenRouter(cvText: string) {
+  const localEnvPath = resolve(projectRoot, '.env.local');
+  if (!process.env.OPENROUTER_API_KEY && existsSync(localEnvPath)) {
+    process.loadEnvFile(localEnvPath);
+  }
+  const apiKey = process.env.OPENROUTER_API_KEY?.trim();
+  const model = process.env.OPENROUTER_CV_MODEL?.trim() || 'openai/gpt-4.1-mini';
   if (!apiKey) fail('OPENROUTER_API_KEY is required.');
 
   const current = careerSchema.parse(careerJson);
@@ -132,7 +136,7 @@ async function parseWithOpenRouter(cvText: string) {
   }
 }
 
-function stabilizeIds(candidate: Omit<Career, 'meta'>, current: Career) {
+export function stabilizeIds(candidate: Omit<Career, 'meta'>, current: Career) {
   const employmentIds = new Map(current.employment.map((item) => [`${normalize(item.company)}:${normalize(item.role)}`, item.id]));
   const projectIds = new Map(current.projects.map((item) => [normalize(item.name), item.id]));
   const usedEmployment = new Set<string>();
@@ -149,13 +153,13 @@ function stabilizeIds(candidate: Omit<Career, 'meta'>, current: Career) {
   return candidate;
 }
 
-function guardChanges(candidate: Career, current: Career) {
+export function guardChanges(candidate: Career, current: Career, allowLargeRemoval = false) {
   const acceptedNames = [current.person.name, ...current.person.aliases].map(normalize);
   if (!acceptedNames.includes(normalize(candidate.person.name))) {
     fail(`CV identity changed from "${current.person.name}" to "${candidate.person.name}".`);
   }
 
-  if (!allowLargeChange) {
+  if (!allowLargeRemoval) {
     if (candidate.employment.length < Math.ceil(current.employment.length / 2)) {
       fail('More than half of the employment history disappeared. Re-run with --allow-large-change after manual review.');
     }
@@ -165,7 +169,7 @@ function guardChanges(candidate: Career, current: Career) {
   }
 }
 
-async function main() {
+export async function main() {
   const current = careerSchema.parse(careerJson);
   const cvText = extractPdfText();
   const parsed = await parseWithOpenRouter(cvText);
@@ -180,7 +184,7 @@ async function main() {
     },
   });
 
-  guardChanges(candidate, current);
+  guardChanges(candidate, current, allowLargeChange);
 
   const temporaryPath = `${outputPath}.tmp`;
   try {
@@ -194,4 +198,7 @@ async function main() {
   console.log(`Imported ${basename(pdfPath)}: ${candidate.employment.length} jobs and ${candidate.projects.length} projects.`);
 }
 
-await main();
+const executedFile = process.argv[1] ? pathToFileURL(resolve(process.argv[1])).href : null;
+if (executedFile === import.meta.url) {
+  await main();
+}

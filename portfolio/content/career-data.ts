@@ -1,9 +1,8 @@
 import careerJson from './career.json';
 import overridesJson from './career-overrides.json';
-import { careerOverridesSchema, careerSchema } from './career-schema';
+import { validateCareerConfig } from './career-validation';
 
-export const career = careerSchema.parse(careerJson);
-export const careerOverrides = careerOverridesSchema.parse(overridesJson);
+export const { career, overrides: careerOverrides } = validateCareerConfig(careerJson, overridesJson);
 
 const projectsById = new Map(career.projects.map((project) => [project.id, project]));
 
